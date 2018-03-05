@@ -167,6 +167,12 @@ MonoBehaviour:
   isStationed: 0
   currentStation: {fileID: 0}
   eating: 0
+  face: {fileID: 212424553384297498}
+  normal: {fileID: 21300000, guid: 203b9294b81b4bd44ace79b4582291ac, type: 3}
+  angry: {fileID: 21300000, guid: 17c09ee73fd90664788caea739fb5f2d, type: 3}
+  owo: {fileID: 21300000, guid: 731f7db00e11b534faffc2250e67f3ef, type: 3}
+  sad: {fileID: 21300000, guid: fa0611e1cbecf9b49b81938d1499028b, type: 3}
+  smile: {fileID: 21300000, guid: 1fe9ecc29bde14c41b354a5f46e95b48, type: 3}
 --- !u!114 &114861308584802948
 MonoBehaviour:
   m_ObjectHideFlags: 1

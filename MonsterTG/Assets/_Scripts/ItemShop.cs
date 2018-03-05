@@ -25,6 +25,7 @@ public class ItemShop : MonoBehaviour {
     public GameObject fruit1;
     public GameObject fruit2;
     public GameObject protein;
+    public GameObject newSlime;
 
 
     public void Buy(int itemID)
@@ -53,17 +54,22 @@ public class ItemShop : MonoBehaviour {
     {
         if (selected.ID == 0)
         {
-            Instantiate(fruit1, GameController.Instance.mainHouse.transform.position, fruit1.transform.rotation);
+            Instantiate(fruit1, new Vector3(0, 5, 0), fruit1.transform.rotation);
         }else if (selected.ID == 1)
         {
-            Instantiate(fruit2, GameController.Instance.mainHouse.transform.position, fruit2.transform.rotation);
+            Instantiate(fruit2, new Vector3(0, 5, 0), fruit2.transform.rotation);
         }
         else if (selected.ID == 2)
         {
-
-        }else if (selected.ID == 3)
+            GameObject newCreature = Instantiate(newSlime, new Vector3(0, 5, 0), newSlime.transform.rotation);
+            GameController.Instance.Creatures.Add(newCreature.GetComponentInChildren<CreatueBehavior>());
+            GameController.Instance.Creatures[GameController.Instance.Creatures.Count - 1].stats = new Stats("Steve", 0, 0, 0, 0, 0, 20, 20);
+            GameController.Instance.Creatures[GameController.Instance.Creatures.Count - 1].LoadCreature(GameController.Instance.Creatures[GameController.Instance.Creatures.Count - 1].stats);
+            GameController.Instance.Save();
+        }
+        else if (selected.ID == 3)
         {
-            Instantiate(protein, GameController.Instance.mainHouse.transform.position, protein.transform.rotation);
+            Instantiate(protein, new Vector3(0, 5, 0), protein.transform.rotation);
         }
     }
 }

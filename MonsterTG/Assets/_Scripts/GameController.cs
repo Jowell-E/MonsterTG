@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour {
     public UIController MainCanvas;
     public List<CreatueBehavior> Creatures = new List<CreatueBehavior>();
     public List<WorkStation> Stations = new List<WorkStation>();
-    public static Vector2 PiecePlacementOffset = new Vector2(3, 3);
+    public static Vector2 PiecePlacementOffset = new Vector2(3,3);
 
     public GameObject creaturePrefab;
     public Transform creaturesParent;
@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour {
             Creatures.Add(newCreature.GetComponentInChildren<CreatueBehavior>());
             Creatures[0].stats = new Stats("Steve", 0, 0, 0, 0, 0, 20, 20);
             Creatures[0].LoadCreature(Creatures[0].stats);
+            Save();
         }
     }
 
@@ -95,8 +96,8 @@ public class GameController : MonoBehaviour {
         CreatueBehavior creature = null;
         foreach (var solution in Creatures)
         {
-            if (((fruit.transform.localPosition.x > solution.transform.parent.localPosition.x - PiecePlacementOffset.x) && (fruit.transform.localPosition.x < solution.transform.parent.localPosition.x + PiecePlacementOffset.x))
-                && ((fruit.transform.localPosition.z > solution.transform.parent.localPosition.z - PiecePlacementOffset.y) && (fruit.transform.localPosition.z < solution.transform.parent.localPosition.z + PiecePlacementOffset.y)))
+            if (((fruit.transform.position.x > solution.transform.parent.localPosition.x - PiecePlacementOffset.x) && (fruit.transform.position.x < solution.transform.parent.localPosition.x + PiecePlacementOffset.x))
+                && ((fruit.transform.position.z > solution.transform.parent.localPosition.z - PiecePlacementOffset.y) && (fruit.transform.position.z < solution.transform.parent.localPosition.z + PiecePlacementOffset.y)))
             {
 
                 isCreature = true;
@@ -148,11 +149,7 @@ public class GameController : MonoBehaviour {
         int gain = 10;
         Stats stats = selected.stats;
 
-        gain += stats.Strength;
-        gain += stats.Agility;
-        gain += stats.Endurance;
-        gain -= stats.Happiness;
-        gain -= stats.Hunger;
+        gain = Mathf.RoundToInt((stats.Strength + stats.Agility + stats.Endurance) * (stats.Happiness + stats.Hunger) / 10);
 
         MainCanvas.Award(stats.Name, gain);
         Money += gain;
@@ -185,13 +182,19 @@ public class GameController : MonoBehaviour {
             FileStream file = File.Open(Application.persistentDataPath + "/Save.sav", FileMode.Open);
             PlayerData data = (PlayerData)bf.Deserialize(file);
 
+            int Pos = 0;
             foreach (Stats creature in data.creatures)
             {
                 GameObject newCreature = Instantiate(creaturePrefab, creaturesParent);
+                Vector3 pos = newCreature.transform.localPosition;
+                pos.x = Pos;
+                newCreature.transform.localPosition = pos;
 
                 newCreature.GetComponentInChildren<CreatueBehavior>().LoadCreature(creature);
 
                 Creatures.Add(newCreature.GetComponentInChildren<CreatueBehavior>());
+
+                Pos += 3;
             }
 
             Money = data.Money;
@@ -209,7 +212,7 @@ public class GameController : MonoBehaviour {
 
         GameObject newCreature = Instantiate(creaturePrefab, creaturesParent);
         Creatures.Add(newCreature.GetComponentInChildren<CreatueBehavior>());
-        Creatures[0].stats = new Stats("Steve", 0, 0, 0, 0, 0, 0, 0);
+        Creatures[0].stats = new Stats("Steve", 0, 0, 0, 0, 0, 20, 20);
 
         Money = 0;
 

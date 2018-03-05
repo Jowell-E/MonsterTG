@@ -6,9 +6,8 @@ public class Treadmill : WorkStation {
 
     protected override void Work()
     {
-        base.Work();
-
         occupant.stats.Agility += GrowthAmount;
+        base.Work();
     }
 
 }

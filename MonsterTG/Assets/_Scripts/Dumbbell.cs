@@ -6,9 +6,10 @@ public class Dumbbell : WorkStation {
 
     protected override void Work()
     {
-        base.Work();
-
         occupant.stats.Strength += GrowthAmount;
+        occupant.stats.Endurance += GrowthAmount/2;
+
+        base.Work();
     }
 
 }

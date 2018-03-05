@@ -65,8 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b5dc718a8d1bf41a5fd8b23128838e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HungerAmount: 10
+  HungerAmount: 5
   EnduranceAmount: 1
+  StrengthAmount: 0
+  AgilityAmount: 0
+  HappinessAmount: 0
   holdLimit: 0
   tree: {fileID: 0}
   layer:

@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4726150342543766}
   - component: {fileID: 212710106743154988}
-  - component: {fileID: 61459338582363916}
   - component: {fileID: 114172136438873702}
+  - component: {fileID: 65837039567913772}
   m_Layer: 11
   m_Name: Protein
   m_TagString: Untagged
@@ -35,38 +35,25 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1201564447581730}
-  m_LocalRotation: {x: 0.51621956, y: -0, z: -0, w: 0.85645634}
-  m_LocalPosition: {x: -7.61, y: 0.6, z: -10.752}
+  m_LocalRotation: {x: 0.35355338, y: -0.35355338, z: 0.1464466, w: 0.8535535}
+  m_LocalPosition: {x: -7.61, y: 1, z: -10.752}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 62.158005, y: 0, z: 0}
---- !u!61 &61459338582363916
-BoxCollider2D:
+  m_LocalEulerAnglesHint: {x: 45, y: -45, z: 0}
+--- !u!65 &65837039567913772
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1201564447581730}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 5}
-    newSize: {x: 10, y: 10}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
-  m_EdgeRadius: 0
+  m_Size: {x: 5, y: 5.0000005, z: 0.20000003}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114172136438873702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,8 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b5dc718a8d1bf41a5fd8b23128838e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HungerAmount: 10
-  EnduranceAmount: 5
+  HungerAmount: 5
+  EnduranceAmount: 4
+  StrengthAmount: 3
+  AgilityAmount: 0
+  HappinessAmount: 0
   holdLimit: 0
   tree: {fileID: 0}
   layer:

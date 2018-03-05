@@ -8,7 +8,6 @@ public class HoldToDrag : MonoBehaviour {
     public float holdLimit = 1f;
     private float dragTimer;
     private bool holding = false;
-    private bool dragging = false;
 
     CreatueBehavior creature;
     public LayerMask layer;
@@ -27,7 +26,6 @@ public class HoldToDrag : MonoBehaviour {
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer))
                 {
-                    Debug.Log("Hit");
                     if (hit.collider.gameObject == this.gameObject)
                     {
                         Vector3 newPos = new Vector3(hit.point.x, transform.position.y, hit.point.z);

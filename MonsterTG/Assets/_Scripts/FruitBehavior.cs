@@ -5,6 +5,9 @@ using UnityEngine;
 public class FruitBehavior : MonoBehaviour {
     public int HungerAmount;
     public int EnduranceAmount;
+    public int StrengthAmount;
+    public int AgilityAmount;
+    public int HappinessAmount;
 
     public float holdLimit = 1f;
     private float dragTimer;

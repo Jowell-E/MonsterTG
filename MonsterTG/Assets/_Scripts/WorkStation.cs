@@ -44,7 +44,7 @@ public class WorkStation : MonoBehaviour {
             return;
         }   
 
-        if (Time.time - WorkTimer > WorkRate)
+        if (Time.time - WorkTimer > WorkRate + (occupant.stats.Level / 100))
         {
             WorkTimer = Time.time;
 
@@ -55,6 +55,11 @@ public class WorkStation : MonoBehaviour {
 
     protected virtual void Work()
     {
+        if (occupant.stats.Hunger <= 0 || occupant.stats.Happiness <= 0)
+        {
+            return;
+        }
+
         occupant.stats.Hunger -= 1;
         occupant.stats.Happiness -= 1;
 
@@ -67,6 +72,7 @@ public class WorkStation : MonoBehaviour {
             occupant.stats.Level += 1;
         }
 
+        occupant.React();
         GameController.Instance.Save();
         GameController.Instance.UpdatePanel(occupant);
     }
